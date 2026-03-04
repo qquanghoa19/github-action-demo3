@@ -5,8 +5,12 @@ on:
       - main
 jobs:
   test:
+    env:
+      DB_USERNAME: ${{ secrets.DB_USERNAME }}
     runs-on: ubuntu-latest
     steps:
+      - name: Output env var
+        run: echo $DB_USERNAME
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies
